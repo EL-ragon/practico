@@ -7,25 +7,21 @@ class Ventana(QWidget):
         super().__init__()
         self.setWindowTitle("Compra de Pasaje Aéreo")
         self.setGeometry(100, 100, 500, 500)
-        self.setStyleSheet("background-color: #f0f4f7;")  # Fondo moderno
+        self.setStyleSheet("background-color: #f0f4f7;")
 
-        # --- Layout principal centrado ---
         main_layout = QVBoxLayout()
         self.setLayout(main_layout)
         main_layout.addSpacerItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
 
-        # Layout del formulario
         layout = QGridLayout()
         main_layout.addLayout(layout)
         main_layout.addSpacerItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
 
-        # --- Título ---
         titulo = QLabel("Formulario de Compra")
         titulo.setAlignment(Qt.AlignCenter)
         titulo.setStyleSheet("font-size: 22px; font-weight: bold; color: #2c3e50;")
         layout.addWidget(titulo, 0, 0, 1, 2)
 
-        # --- Campos básicos ---
         nombre_label = QLabel("Nombre:")
         self.nombre_input = QLineEdit()
         self.nombre_input.setStyleSheet("padding: 5px; font-size: 14px;")
@@ -44,7 +40,6 @@ class Ventana(QWidget):
         layout.addWidget(dni_label, 3, 0)
         layout.addWidget(self.dni_input, 3, 1)
 
-        # --- Selección de vuelo ---
         origen_label = QLabel("Origen:")
         self.origen_combo = QComboBox()
         self.origen_combo.addItems(["Buenos Aires", "Santiago", "Montevideo"])
@@ -66,7 +61,6 @@ class Ventana(QWidget):
         layout.addWidget(fecha_label, 6, 0)
         layout.addWidget(self.fecha_vuelo, 6, 1)
 
-        # --- Clase y pasajeros ---
         turista_radio = QRadioButton("Turista")
         ejecutiva_radio = QRadioButton("Ejecutiva")
         self.clase_group = QButtonGroup(self)
@@ -82,7 +76,6 @@ class Ventana(QWidget):
         layout.addWidget(cant_label, 8, 0)
         layout.addWidget(self.cant_spin, 8, 1)
 
-        # --- Botón Comprar ---
         self.boton_comprar = QPushButton("Comprar")
         self.boton_comprar.setStyleSheet(
             "background-color: #27ae60; color: white; font-size: 16px; padding: 8px; border-radius:5px;"
@@ -90,7 +83,6 @@ class Ventana(QWidget):
         self.boton_comprar.clicked.connect(self.mostrar_resumen)
         layout.addWidget(self.boton_comprar, 9, 0, 1, 2)
 
-    # --- Función para mostrar resumen ---
     def mostrar_resumen(self):
         nombre = self.nombre_input.text()
         apellido = self.apellido_input.text()
